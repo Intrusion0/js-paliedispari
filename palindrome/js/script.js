@@ -32,13 +32,19 @@ let userWord = prompt("Inserisci una parola");
 console.log(userWord);
 
 let result = wordPalindrome(userWord);
-resWordPalindrome.append(result);
+
+if (wordPalindrome(userWord)) {
+    resWordPalindrome.append("La parola inserita è Palindroma");
+} else {
+    resWordPalindrome.append("La parola inserita non è Palindroma");
+}
+
 console.log(result);
 
 // FUNZIONE
 function wordPalindrome(wordInput) {
 
-    let palindrome;
+    // let palindrome;
 
     let userWordArr = wordInput.split('');
     console.log(userWordArr);   // Console log per vedere cosa stampa effettivamente la funzione utilizzata
@@ -48,9 +54,8 @@ function wordPalindrome(wordInput) {
     console.log(userWordRev);   // Console log per vedere cosa stampa effettivamente la funzione utilizzata
 
     if (wordInput === userWordRev) {
-        palindrome = "La parola inserita è Palindroma";
+        return true;
     } else {
-        palindrome = "La parola inserita non è palindroma";
+        return false;
     }
-    return palindrome;
 }

@@ -30,14 +30,6 @@ let userNum = parseInt(prompt("Inserisci un numero compreso tra 1 e 5"));
 console.log("Numero scelto dall'utente: ", userNum);
 
 
-// FUNZIONE NUMERO RANDOM DA 1 A 5 PER IL BOT
-function numRandom() {
-
-    let botNum = Math.floor(Math.random() * 5) + 1;
-
-    return botNum;
-}
-
 let assignedNumBot = numRandom();
 console.log("Numero assegnato al computer: ", assignedNumBot);
 
@@ -45,26 +37,28 @@ let sum = userNum + assignedNumBot;
 console.log("La somma dei numeri è di: ", sum);
 
 
-// FUNZIONE PER CONFRONTARE SE LA SOMMA E' PARI O DISPARI
-function comparisonOfNum(sumInput) {
-
-    let winner;
-
-    if(sumInput % 2 === 0){
-        winner = "La somma dei numeri è pari";
-    } else {
-        winner = "La somma dei numeri è dispari";
-    }
-    return winner;
+if (comparisonOfNum(sum, choice)) {
+    resultGame.append("Hai vinto!");
+} else {
+    resultGame.append("  Hai perso!");
 }
 
-let winnerGame = comparisonOfNum(sum);
-console.log(winnerGame);
 
-if (choice === "pari" && sum % 2 === 0) {
-    resultGame.append(winnerGame, "  Hai vinto!");
-} else if (choice === "dispari" && sum % 2 !== 0) {
-    resultGame.append(winnerGame, "  Hai vinto!");
-} else {
-    resultGame.append(winnerGame, "  Hai perso!");
+// FUNZIONE NUMERO RANDOM DA 1 A 5 PER IL BOT
+function numRandom() {
+
+    return Math.floor(Math.random() * 5) + 1;
+}
+
+
+// FUNZIONE PER CONFRONTARE SE LA SOMMA E' PARI O DISPARI
+function comparisonOfNum(sumInput, choise = null) {
+
+    if (sumInput % 2 === 0 && choise == 'pari') {
+        return true;
+    } else if (sumInput % 2 != 0 && choise == 'dispari') {
+        return true;
+    }
+
+    return false;
 }
